@@ -6,10 +6,12 @@ allprojects {
 subprojects {
     repositories {
         mavenLocal()
-        mavenCentral()
+        //mavenCentral()
 
         // JBoss Repo
-        maven { url 'https://repository.jboss.org/nexus/content/groups/public-jboss/' }
+        // httpsだとnot authenticated errorとなるため、httpへ変更。
+        maven { url 'http://repository.jboss.org/nexus/content/groups/public-jboss/' }
+        maven { url 'http://repo1.maven.org/maven2'}
     }
 
     dependencies { 

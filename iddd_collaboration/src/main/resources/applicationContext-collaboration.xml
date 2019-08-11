@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+		<beans
+				xmlns="http://www.springframework.org/schema/beans"
+				xmlns:context="http://www.springframework.org/schema/context"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-2.5.xsd ">
 
-	<bean id="calendarApplicationService" class="com.saasovation.collaboration.application.calendar.CalendarApplicationService" >
-		<constructor-arg ref="calendarRepository" />
-		<constructor-arg ref="calendarEntryRepository" />
-		<constructor-arg ref="calendarIdentityService" />
-		<constructor-arg ref="collaboratorService" />
-	</bean>
+			<bean id="calendarApplicationService" class="com.saasovation.collaboration.application.calendar.CalendarApplicationService" >
+				<constructor-arg ref="calendarRepository" />
+				<constructor-arg ref="calendarEntryRepository" />
+				<constructor-arg ref="calendarIdentityService" />
+				<constructor-arg ref="collaboratorService" />
+			</bean>
 
-	<bean id="calendarEntryApplicationService" class="com.saasovation.collaboration.application.calendar.CalendarEntryApplicationService" >
-		<constructor-arg ref="calendarEntryRepository" />
-		<constructor-arg ref="collaboratorService" />
-	</bean>
+			<bean id="calendarEntryApplicationService" class="com.saasovation.collaboration.application.calendar.CalendarEntryApplicationService" >
+				<constructor-arg ref="calendarEntryRepository" />
+				<constructor-arg ref="collaboratorService" />
+			</bean>
 
-	<bean id="calendarEntryQueryService" class="com.saasovation.collaboration.application.calendar.CalendarEntryQueryService" >
-		<constructor-arg ref="collaborationDataSource" />
-	</bean>
+			<bean id="calendarEntryQueryService" class="com.saasovation.collaboration.application.calendar.CalendarEntryQueryService" >
+				<constructor-arg ref="collaborationDataSource" />
+			</bean>
 
-	<bean id="calendarEntryRepository" class="com.saasovation.collaboration.port.adapter.persistence.repository.EventStoreCalendarEntryRepository" />
+			<bean id="calendarEntryRepository" class="com.saasovation.collaboration.port.adapter.persistence.repository.EventStoreCalendarEntryRepository" />
 
-	<bean id="calendarIdentityService" class="com.saasovation.collaboration.domain.model.calendar.CalendarIdentityService" >
-		<constructor-arg ref="calendarRepository" />
-		<constructor-arg ref="calendarEntryRepository" />
-	</bean>
+			<bean id="calendarIdentityService" class="com.saasovation.collaboration.domain.model.calendar.CalendarIdentityService" >
+				<constructor-arg ref="calendarRepository" />
+				<constructor-arg ref="calendarEntryRepository" />
+			</bean>
 
-	<bean id="calendarQueryService" class="com.saasovation.collaboration.application.calendar.CalendarQueryService" >
-		<constructor-arg ref="collaborationDataSource" />
-	</bean>
+			<bean id="calendarQueryService" class="com.saasovation.collaboration.application.calendar.CalendarQueryService" >
+				<constructor-arg ref="collaborationDataSource" />
+			</bean>
 
-	<bean id="calendarRepository" class="com.saasovation.collaboration.port.adapter.persistence.repository.EventStoreCalendarRepository" />
+			<bean id="calendarRepository" class="com.saasovation.collaboration.port.adapter.persistence.repository.EventStoreCalendarRepository" />
 
-	<bean id="collaborationDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
-	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	    <property name="url" value="jdbc:mysql://localhost:3306/iddd_collaboration" />
-	    <property name="username" value="root" />
-	    <property name="password" value="root" />
-	    <property name="initialSize" value="1" />
-	    <property name="maxActive" value="5" />
-	    <property name="defaultAutoCommit" value="false" />
-	</bean>
+			<bean id="collaborationDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+				<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://mysql:3306/iddd_collaboration" />
+				<property name="username" value="root" />
+				<!-- <property name="password" value="root" /> -->
+				<property name="initialSize" value="1" />
+				<property name="maxActive" value="5" />
+				<property name="defaultAutoCommit" value="false" />
+			</bean>
 
-	<bean id="collaboratorService" class="com.saasovation.collaboration.port.adapter.service.TranslatingCollaboratorService">
-		<constructor-arg ref="userInRoleAdapter" />
-	</bean>
+			<bean id="collaboratorService" class="com.saasovation.collaboration.port.adapter.service.TranslatingCollaboratorService">
+				<constructor-arg ref="userInRoleAdapter" />
+			</bean>
 
-	<bean id="discussionApplicationService" class="com.saasovation.collaboration.application.forum.DiscussionApplicationService" >
-		<constructor-arg ref="discussionRepository" />
-		<constructor-arg ref="forumIdentityService" />
-		<constructor-arg ref="postRepository" />
-		<constructor-arg ref="collaboratorService" />
+			<bean id="discussionApplicationService" class="com.saasovation.collaboration.application.forum.DiscussionApplicationService" >
+				<constructor-arg ref="discussionRepository" />
+				<constructor-arg ref="forumIdentityService" />
+				<constructor-arg ref="postRepository" />
+				<constructor-arg ref="collaboratorService" />
 	</bean>
 
 	<bean id="discussionQueryService" class="com.saasovation.collaboration.application.forum.DiscussionQueryService" >
